@@ -1,6 +1,6 @@
 *.bat
+.gitignore
 __pycache__/
-.vs/
 *.sln
 *.pyproj
 *.pyc
