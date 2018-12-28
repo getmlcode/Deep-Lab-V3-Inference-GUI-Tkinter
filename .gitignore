@@ -1,0 +1,9 @@
+*.bat
+__pycache__/
+.vs/
+*.sln
+*.pyproj
+*.pyc
+*.data*
+*.meta*
+*.index*
