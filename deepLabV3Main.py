@@ -15,7 +15,8 @@ class deepLabV3_GUI:
 
         self.testImgFrame = Frame(master,highlightbackground="green",
                              highlightcolor="green",
-                             highlightthickness=2).\
+                             width=300,height=300,
+                             highlightthickness=1).\
                                  grid(row=0,column=0)
 
         self.testImgLabel = Label(self.testImgFrame,
@@ -34,8 +35,9 @@ class deepLabV3_GUI:
 
         self.userCommandsFrame = Frame(master,highlightbackground="green",
                                   highlightcolor="green",
-                                  highlightthickness=2).\
-                                      grid(row=1,column=2)
+                                  width=300,height=300,
+                                  highlightthickness=1).\
+                                      grid(row=0,column=2)
 
         self.segmentedImgLabel = Label(self.userCommandsFrame,
                                        image = self.SegmentedImage,

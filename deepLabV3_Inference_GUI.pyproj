@@ -22,6 +22,9 @@
     <Compile Include="deepLabV3Main.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="semanticSegmentation.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
