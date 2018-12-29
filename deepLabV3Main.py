@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 from tkinter import filedialog
+import semanticSegmentation
 
 mainWindow = Tk()
 class deepLabV3_GUI:

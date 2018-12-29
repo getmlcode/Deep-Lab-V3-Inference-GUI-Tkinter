@@ -1,0 +1,19 @@
+{
+    "accumulated_validation_miou": 0,
+    "batch_norm_decay": 0.997,
+    "batch_norm_epsilon": 1e-05,
+    "batch_size": 16,
+    "current_best_val_loss": "0.294389428197",
+    "gpu_id": 1,
+    "l2_regularizer": 0.0001,
+    "multi_grid": [
+        1,
+        2,
+        4
+    ],
+    "number_of_classes": 21,
+    "output_stride": 16,
+    "starting_learning_rate": 1e-05,
+    "resnet_model": "resnet_v2_50",
+    "crop_size": 512
+}
