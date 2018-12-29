@@ -1,8 +1,6 @@
-from preprocessing.read_data import tf_record_parser, scale_image_with_crop_padding
-from preprocessing import training
+from matplotlib import pyplot as plt
 import tensorflow as tf
 import numpy as np
-from matplotlib import pyplot as plt
 import network
 slim = tf.contrib.slim
 import os
@@ -41,7 +39,8 @@ class deepLab_InferenceEngine:
         saver = tf.train.Saver()
         saver.restore(sess, os.path.join(self.modelDirectory, "model.ckpt"))
 
-        print('Model restored, Segmentation In Progress..')
+        print('DeeplabV3 Model restored')
+        print('Segmentation In Progress..')
         resultImg = sess.run(self.predictions_tf)
         print('Segmentation Done !')
         return resultImg[0]
@@ -50,7 +49,6 @@ class deepLab_InferenceEngine:
 if __name__=="__main__":
     sess = tf.Session()
     deepLab = deepLab_InferenceEngine(os.getcwd()+'\model')
-    print(deepLab.modelConfig.crop_size)
     testImage = Image.open('C:\\DataSets'+'\\t140.jpg')
     segmentedImage = deepLab.segmentImage(testImage)
     plt.imshow(segmentedImage)
