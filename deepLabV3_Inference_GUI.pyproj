@@ -23,10 +23,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="network.py" />
-    <Compile Include="preprocessing\inception_preprocessing.py" />
-    <Compile Include="preprocessing\read_data.py" />
-    <Compile Include="preprocessing\training.py" />
-    <Compile Include="preprocessing\__inti__.py" />
     <Compile Include="resnet\resnet_utils.py" />
     <Compile Include="resnet\resnet_v2.py" />
     <Compile Include="semanticSegmentation.py">
@@ -35,7 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resnet\" />
-    <Folder Include="preprocessing\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
