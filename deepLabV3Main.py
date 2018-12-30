@@ -1,9 +1,11 @@
+from matplotlib import pyplot as plt
 from tkinter import *
-from PIL import Image, ImageTk
+from PIL import Image , ImageTk
 from tkinter import filedialog
-import semanticSegmentation
+import tensorflow as tf
 
 mainWindow = Tk()
+sess = tf.Session()
 class deepLabV3_GUI:
     TestImage = []
     SegmentedImage = []
@@ -43,10 +45,11 @@ class deepLabV3_GUI:
                                        relief=SUNKEN)
         self.segmentedImgLabel.grid(row=0,column=1)
 
-        self.restoreWeightsButton = Button(self.userCommandsFrame,
-                                           text='Restore Model Weights',
-                                           command=self.restoreModelWeights).\
-                                               grid(row=1, column=1,sticky=W,padx=2,pady=2)
+        self.setModelDirectory = Button(self.userCommandsFrame,
+                                           text='Model Directory',
+                                           state=DISABLED,
+                                           command=self.setModelDirectory)
+        self.setModelDirectory.grid(row=1, column=1,sticky=W,padx=2,pady=2)
 
         self.segmentTestImage = Button(self.userCommandsFrame,
                                            text='Segment Test Image',
@@ -62,8 +65,12 @@ class deepLabV3_GUI:
                                      grid(row=3, column=1, sticky=W,padx=2,pady=2)
 
 
-    def restoreModelWeights(self):
-        print('so it works')
+    def setModelDirectory(self):
+        modelDir = filedialog.askdirectory()
+        from semanticSegmentation import deepLabV3_InferenceEngine
+        self.deepLab = deepLabV3_InferenceEngine(modelDir,sess)
+        print('Deeplab Inference Object Created')
+        self.segmentTestImage['state'] = NORMAL
     
     def loadTestImage(self):
         path=filedialog.askopenfilename(filetypes=[("Image Format",'.jpg'),("Image Format",'.png')])
@@ -72,15 +79,34 @@ class deepLabV3_GUI:
         self.testImgLabel.configure(image=tkimage)
         self.testImgLabel.image=tkimage
         self.testImgLabel.grid(row=0,column=0)
-        self.segmentTestImage['state'] = NORMAL
-        #TestImage.show()
+        self.setModelDirectory['state'] = NORMAL
 
     def segmentImage(self):
-        # self.SegmentedImage = ImplementThisFunctionForSegmentation(self.TestImage)
-        tkimage = ImageTk.PhotoImage(self.TestImage)
+        self.SegmentedImage = self.deepLab.segmentImage(self.TestImage)
+
+        #This produces a blacked out image , need to chek why !
+        tkimage = ImageTk.PhotoImage(Image.fromarray(self.SegmentedImage.astype('uint8')))
         self.segmentedImgLabel.configure(image=tkimage)
-        self.segmentedImgLabel.image=tkimage
+        self.segmentedImgLabel.image = tkimage
         self.segmentedImgLabel.grid(row=0,column=1)
+
+        #This displays correct segmented image
+        plt.imshow(self.SegmentedImage)
+        plt.show()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
 
             
 deepLabV3 = deepLabV3_GUI(mainWindow)
