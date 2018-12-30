@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 from tkinter import *
+from tkinter import ttk
 from PIL import Image , ImageTk
 from tkinter import filedialog
 import tensorflow as tf
@@ -20,14 +21,14 @@ class deepLabV3_GUI:
                              highlightthickness=1).\
                                  grid(row=0,column=0,padx=2,pady=2)
 
-        self.testImgLabel = Label(self.testImgFrame,
+        self.testImgLabel = ttk.Label(self.testImgFrame,
                                   image = self.TestImage,
                                   text = 'Test Image Will Be Loaded Here',
                                   relief=SUNKEN)
         self.testImgLabel.grid(row=0,column=0)
 
-        self.loadtestImg = Button(self.testImgFrame,
-                                  text='Load Test Image', 
+        self.loadtestImg = ttk.Button(self.testImgFrame,
+                                  text='Select Image', 
                                   command=self.loadTestImage).\
                                        grid(row=1, column=0,sticky=W,padx=2,pady=2)
 
@@ -39,27 +40,27 @@ class deepLabV3_GUI:
                                   highlightthickness=1).\
                                       grid(row=0,column=1,sticky=E,padx=2,pady=2)
 
-        self.segmentedImgLabel = Label(self.userCommandsFrame,
+        self.segmentedImgLabel = ttk.Label(self.userCommandsFrame,
                                        image = self.SegmentedImage,
                                        text = 'Segmented Image Will Be Displayed Here',
                                        relief=SUNKEN)
         self.segmentedImgLabel.grid(row=0,column=1)
 
-        self.setModelDirectory = Button(self.userCommandsFrame,
+        self.setModelDirectory = ttk.Button(self.userCommandsFrame,
                                            text='Model Directory',
                                            state=DISABLED,
                                            command=self.setModelDirectory)
         self.setModelDirectory.grid(row=1, column=1,sticky=W,padx=2,pady=2)
 
-        self.segmentTestImage = Button(self.userCommandsFrame,
-                                           text='Segment Test Image',
+        self.segmentTestImage = ttk.Button(self.userCommandsFrame,
+                                           text='Segment Image',
                                            state=DISABLED,
                                            command=self.segmentImage)
         self.segmentTestImage.grid(row=2, column=1,sticky=W,padx=2,pady=2)                                      
 
 
         #Quit Button
-        self.quitButton = Button(self.userCommandsFrame,
+        self.quitButton = ttk.Button(self.userCommandsFrame,
                                  text='Quit',
                                  command=master.destroy).\
                                      grid(row=3, column=1, sticky=W,padx=2,pady=2)
