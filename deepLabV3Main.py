@@ -93,21 +93,7 @@ class deepLabV3_GUI:
         #This displays correct segmented image
         plt.imshow(self.SegmentedImage)
         plt.show()
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
-
-
-            
+      
 deepLabV3 = deepLabV3_GUI(mainWindow)
 mainWindow.mainloop()
