@@ -12,7 +12,7 @@ Tensorflow 1.11.0
 tkinter 8.6  
 numpy 1.15.3  
 PIL 1.1.7  
-json 2.0,9
+json 2.0.9  
 matplotlib 3.0.1 ( needed if running [ this file ]( https://github.com/getmlcode/Deep-Lap-V3-Inference-GUI-Tkinter/blob/master/semanticSegmentation.py ) from command line )  
 
 # Demo
