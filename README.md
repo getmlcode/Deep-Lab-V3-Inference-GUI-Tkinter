@@ -3,12 +3,10 @@ Tkinter based GUI wrapper for semantic segmentation using deeplab V3 (Inference 
 
 [ Download Pretrained Model ]( https://www.dropbox.com/sh/s7sx69pqjhrk0s4/AACXWCRd9JJ0zvcvDES9G3sba?dl=0 )  
   
-Original code for inference runs only from command line and works only with  
-tfrecords files. This one lets the user select image from their disk using a GUI  
+Original code for inference runs only from command line and works only with tfrecords files. This one lets the user select image from their disk using a GUI  
 and works with jpg and png formats.  
 
-One can also use [ this file ]( https://github.com/getmlcode/Deep-Lap-V3-Inference-GUI-Tkinter/blob/master/semanticSegmentation.py )  
-to run from command line.  
+One can also use [ this file ]( https://github.com/getmlcode/Deep-Lap-V3-Inference-GUI-Tkinter/blob/master/semanticSegmentation.py ) to run from command line.  
 
 # Dependencies  
 Tensorflow 1.11.0  
