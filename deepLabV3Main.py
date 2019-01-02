@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from tkinter import *
 from tkinter import ttk
 from PIL import Image , ImageTk
