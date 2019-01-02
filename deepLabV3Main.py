@@ -49,7 +49,7 @@ class deepLabV3_GUI:
         self.setModelDirectory = ttk.Button(self.userCommandsFrame,
                                            text='Model Directory',
                                            state=DISABLED,
-                                           command=self.setModelDirectory)
+                                           command=self.setModelWeights)
         self.setModelDirectory.grid(row=1, column=1,sticky=W,padx=2,pady=2)
 
         self.segmentTestImage = ttk.Button(self.userCommandsFrame,
@@ -65,12 +65,11 @@ class deepLabV3_GUI:
                                  command=master.destroy).\
                                      grid(row=3, column=1, sticky=W,padx=2,pady=2)
 
-
-    def setModelDirectory(self):
+    def setModelWeights(self):
         modelDir = filedialog.askdirectory()
         from semanticSegmentation import deepLabV3_InferenceEngine
         self.deepLab = deepLabV3_InferenceEngine(modelDir,sess)
-        print('Deeplab Inference Object Created')
+        #print('Deeplab Inference Object Created')
         self.segmentTestImage['state'] = NORMAL
     
     def loadTestImage(self):
