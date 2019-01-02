@@ -4,6 +4,7 @@ from tkinter import ttk
 from PIL import Image , ImageTk
 from tkinter import filedialog
 import tensorflow as tf
+import numpy as np
 
 mainWindow = Tk()
 sess = tf.Session()
@@ -67,32 +68,38 @@ class deepLabV3_GUI:
 
     def setModelWeights(self):
         modelDir = filedialog.askdirectory()
-        from semanticSegmentation import deepLabV3_InferenceEngine
-        self.deepLab = deepLabV3_InferenceEngine(modelDir,sess)
-        #print('Deeplab Inference Object Created')
-        self.segmentTestImage['state'] = NORMAL
+        if(len(modelDir)>0):
+            from semanticSegmentation import deepLabV3_InferenceEngine
+            self.deepLab = deepLabV3_InferenceEngine(modelDir,sess)
+            #print('Deeplab Inference Object Created')
+            self.segmentedImgLabel['text'] = 'Model Weights Loaded'
+            self.segmentTestImage['state'] = NORMAL
+        else:
+            return
     
     def loadTestImage(self):
         path=filedialog.askopenfilename(filetypes=[("Image Format",'.jpg'),("Image Format",'.png')])
-        self.TestImage = Image.open(path)
-        tkimage = ImageTk.PhotoImage(self.TestImage)
-        self.testImgLabel.configure(image=tkimage)
-        self.testImgLabel.image=tkimage
-        self.testImgLabel.grid(row=0,column=0)
-        self.setModelDirectory['state'] = NORMAL
+        if(len(path)>0):
+            self.TestImage = Image.open(path)
+            tkimage = ImageTk.PhotoImage(self.TestImage)
+            self.testImgLabel.configure(image=tkimage)
+            self.testImgLabel.image=tkimage
+            self.testImgLabel.grid(row=0,column=0)
+            self.setModelDirectory['state'] = NORMAL
+        else:
+            return
 
     def segmentImage(self):
         self.SegmentedImage = self.deepLab.segmentImage(self.TestImage)
-
-        #This produces a blacked out image , need to chek why !
-        tkimage = ImageTk.PhotoImage(Image.fromarray(self.SegmentedImage.astype('uint8')))
+        display = self.SegmentedImage*255 #otherwise fromarray produces a blacked out image
+        tkimage = ImageTk.PhotoImage(Image.fromarray(display.astype(np.uint8)))
         self.segmentedImgLabel.configure(image=tkimage)
         self.segmentedImgLabel.image = tkimage
         self.segmentedImgLabel.grid(row=0,column=1)
 
         #This displays correct segmented image
-        plt.imshow(self.SegmentedImage)
-        plt.show()
+        #plt.imshow(self.SegmentedImage)
+        #plt.show()
 
       
 deepLabV3 = deepLabV3_GUI(mainWindow)

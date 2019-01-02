@@ -3,7 +3,7 @@ Tkinter based GUI wrapper for semantic segmentation using deeplab V3 (Inference 
 
 [ Download Pretrained Model ]( https://www.dropbox.com/sh/s7sx69pqjhrk0s4/AACXWCRd9JJ0zvcvDES9G3sba?dl=0 )
 
-#Demo
+# Demo
 ![](smSegDeepLap.gif)
 
 # Reference
