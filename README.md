@@ -1,4 +1,4 @@
-# Deep-Lap-V3-Inference-GUI-Tkinter
+# Deep-Lab-V3-Inference-GUI-Tkinter
 Tkinter based GUI wrapper for semantic segmentation using deeplab V3 (Inference Only).
 
 [ Download Pretrained Model ]( https://www.dropbox.com/sh/s7sx69pqjhrk0s4/AACXWCRd9JJ0zvcvDES9G3sba?dl=0 )  
